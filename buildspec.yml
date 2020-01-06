@@ -26,7 +26,7 @@ phases:
     commands:
       - EKS_KUBECTL_ROLE_ARN=arn:aws:iam::765326810789:role/eks-codebuild-deploy
       - docker push $REPOSITORY_URI:$TAG
-      - aws eks update-kubeconfig --name octank-webservers
+      - aws eks update-kubeconfig --name octank-apps-dev
       - kubectl apply -f hello-k8s.yml
       - printf '[{"name":"hello-k8s","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
