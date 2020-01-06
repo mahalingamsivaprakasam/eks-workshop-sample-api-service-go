@@ -12,6 +12,7 @@ phases:
       golang: 1.13
   pre_build:
       commands:
+        - REPOSITORY_URI=765326810789.dkr.ecr.us-west-2.amazonaws.com/eks-workshop-sample-api-service-go
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y_%m_%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
         - echo $REPOSITORY_URI _ $TAG
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' hello-k8s.yml
